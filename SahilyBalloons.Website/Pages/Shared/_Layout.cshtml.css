@@ -1,0 +1,131 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.minimo {
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-align: center;
+    word-break: break-all;
+    font-family: 'Comfortaa', cursive;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+a.minimo {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+links a {
+    color: blue;
+    transition: all .5s linear;
+}
+
+links a:hover{
+    color: red;
+    
+}
+
+/* = logo */
+minimo#logo {
+    font-size: 1.5em;
+/*    font-weight: 400;
+*/ /*    position: absolute;
+*/
+/*    top: 25px;
+*/}
+
+    minimo#logo a:before {
+        content: '\1F96D  ';
+        /*content: '\1F96D';*/ /*Mango*/
+        /*content: '\1F34C';*/ /*Banana*/
+        font-weight: initial;
+/*        text-shadow: 1px 1px 2px gray;
+        filter: hue-rotate(15deg) saturate(.6) brightness(1.0);
+*/    }
+
+/*@media (max-width: 400px) {
+    h1#logo {
+        font-size: 2em;
+        line-height: 1.2;
+        top: 35px;
+    }
+}*/
+
+minimo#logo a {
+    height: 80px;
+    color: #000;
+    text-decoration: none;
+}
+
+/*h1#logo a:hover, h1#logo a:active {
+    color: #fff;
+}*/
+
+/*
+ * If you want use logo instead text title, please uncomment the following "h1#logo a" area (line 141~148).
+ * change logo.png and size
+ * change the logo's position at line 122
+ */
+
+/* h1#logo a {
+display: block;
+width: 180px;
+height: 50px;
+background: url(images/logo.png) no-repeat;
+text-indent: -9999px;
+overflow: hidden;
+} */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a {
+  color: #0077cc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 60px;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}

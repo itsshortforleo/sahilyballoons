@@ -42,13 +42,15 @@ minimo#logo {
 */}
 
     minimo#logo a:before {
-        content: '\1F96D  ';
+        content: '\1F388  ';
         /*content: '\1F96D';*/ /*Mango*/
         /*content: '\1F34C';*/ /*Banana*/
+        /*content: '\1F388';*/ /*Balloon*/
         font-weight: initial;
-/*        text-shadow: 1px 1px 2px gray;
+        /*        text-shadow: 1px 1px 2px gray;
         filter: hue-rotate(15deg) saturate(.6) brightness(1.0);
-*/    }
+*/
+    }
 
 /*@media (max-width: 400px) {
     h1#logo {

@@ -27,19 +27,19 @@ links a {
     transition: all .5s linear;
 }
 
-links a:hover{
-    color: red;
-    
-}
+    links a:hover {
+        color: red;
+    }
 
 /* = logo */
 minimo#logo {
     font-size: 1.5em;
-/*    font-weight: 400;
+    /*    font-weight: 400;
 */ /*    position: absolute;
 */
-/*    top: 25px;
-*/}
+    /*    top: 25px;
+*/
+}
 
     minimo#logo a:before {
         content: '\1F388  ';
@@ -48,23 +48,23 @@ minimo#logo {
         /*content: '\1F388';*/ /*Balloon*/
         font-weight: initial;
         /*        text-shadow: 1px 1px 2px gray;
-        filter: hue-rotate(15deg) saturate(.6) brightness(1.0);
+    filter: hue-rotate(15deg) saturate(.6) brightness(1.0);
 */
     }
 
-/*@media (max-width: 400px) {
-    h1#logo {
-        font-size: 2em;
-        line-height: 1.2;
-        top: 35px;
-    }
+    /*@media (max-width: 400px) {
+h1#logo {
+    font-size: 2em;
+    line-height: 1.2;
+    top: 35px;
+}
 }*/
 
-minimo#logo a {
-    height: 80px;
-    color: #000;
-    text-decoration: none;
-}
+    minimo#logo a {
+        height: 80px;
+        color: #000;
+        text-decoration: none;
+    }
 
 /*h1#logo a:hover, h1#logo a:active {
     color: #fff;
@@ -76,58 +76,80 @@ minimo#logo a {
  * change the logo's position at line 122
  */
 
-/* h1#logo a {
-display: block;
-width: 180px;
-height: 50px;
-background: url(images/logo.png) no-repeat;
-text-indent: -9999px;
-overflow: hidden;
-} */
+h1#logo a {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 30px; /* Adjusted height to make the logo smaller */
+    background: url('/images/icononly_nobuffer - Simple for small sizes transparent.png') no-repeat;
+    background-size: contain;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none; /* Remove underline */
+}
+
+    h1#logo a span {
+        text-indent: 0;
+        overflow: visible;
+        margin-left: 40px; /* Adjusted margin to prevent overlap */
+        font-size: 1.5rem;
+        color: #000;
+        text-decoration: none; /* Remove underline */
+        font-family: 'Comfortaa', cursive;
+        line-height: 40px; /* Align text vertically with the logo */
+        vertical-align: middle; /* Ensure vertical alignment */
+        margin-top: 10px; /* Lower the text relative to the logo */
+    }
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 a {
-  color: #0077cc;
+    color: #0077cc;
+}
+
+.navbar-nav .nav-link {
+    line-height: 40px; /* Align navigation links vertically with the logo */
+    vertical-align: middle; /* Ensure vertical alignment */
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
     border-bottom: 1px solid #e5e5e5;
     line-height: 60px;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }

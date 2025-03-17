@@ -27,9 +27,9 @@ links a {
     transition: all .5s linear;
 }
 
-    links a:hover {
-        color: red;
-    }
+links a:hover {
+    color: red;
+}
 
 /* = logo */
 minimo#logo {
@@ -41,18 +41,18 @@ minimo#logo {
 */
 }
 
-    minimo#logo a:before {
-        content: '\1F388  ';
-        /*content: '\1F96D';*/ /*Mango*/
-        /*content: '\1F34C';*/ /*Banana*/
-        /*content: '\1F388';*/ /*Balloon*/
-        font-weight: initial;
-        /*        text-shadow: 1px 1px 2px gray;
+minimo#logo a:before {
+    content: '\1F388  ';
+    /*content: '\1F96D';*/ /*Mango*/
+    /*content: '\1F34C';*/ /*Banana*/
+    /*content: '\1F388';*/ /*Balloon*/
+    font-weight: initial;
+    /*        text-shadow: 1px 1px 2px gray;
     filter: hue-rotate(15deg) saturate(.6) brightness(1.0);
 */
-    }
+}
 
-    /*@media (max-width: 400px) {
+/*@media (max-width: 400px) {
 h1#logo {
     font-size: 2em;
     line-height: 1.2;
@@ -60,11 +60,11 @@ h1#logo {
 }
 }*/
 
-    minimo#logo a {
-        height: 80px;
-        color: #000;
-        text-decoration: none;
-    }
+minimo#logo a {
+    height: 80px;
+    color: #000;
+    text-decoration: none;
+}
 
 /*h1#logo a:hover, h1#logo a:active {
     color: #fff;
@@ -79,27 +79,31 @@ h1#logo {
 h1#logo a {
     display: flex;
     align-items: center;
-    width: auto;
-    height: 30px; /* Adjusted height to make the logo smaller */
+    justify-content: center; /* centers content horizontally within the logo container */
+    height: 40px; /* Match the nav links’ height */
     background: url('/images/icononly_nobuffer - Simple for small sizes transparent.png') no-repeat;
     background-size: contain;
-    text-indent: -9999px;
+    text-indent: -9999px; /* hides the text on the a tag */
     overflow: hidden;
-    text-decoration: none; /* Remove underline */
+    text-decoration: none;
 }
 
     h1#logo a span {
-        text-indent: 0;
+        text-indent: 0; /* reveal the text */
         overflow: visible;
-        margin-left: 40px; /* Adjusted margin to prevent overlap */
+        margin-left: 50px; /* if you still need spacing from the background image */
         font-size: 1.5rem;
         color: #000;
-        text-decoration: none; /* Remove underline */
         font-family: 'Comfortaa', cursive;
-        line-height: 40px; /* Align text vertically with the logo */
-        vertical-align: middle; /* Ensure vertical alignment */
-        margin-top: 10px; /* Lower the text relative to the logo */
+        line-height: 40px; /* set to match the container’s height */
+        vertical-align: middle;
+        margin-top: 7px;
     }
+
+.navbar-nav {
+    display: flex;
+    align-items: center; /* vertically centers all nav links */
+}
 
 a.navbar-brand {
     white-space: normal;

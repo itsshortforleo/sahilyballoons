@@ -32,6 +32,25 @@
         gtag('config', 'AW-11477406563');
     </script>
 
+    <!-- AFTER your existing Global site tag (gtag.js) -->
+    <!-- Event snippet for Click to call conversion -->
+    <script>
+        function gtag_report_conversion(url) {
+          var callback = function () {
+            if (typeof(url) != 'undefined') {
+              window.location = url;
+            }
+          };
+          gtag('event', 'conversion', {
+              'send_to': 'AW-11477406563/UvBnCKzClsEbEOOm7eAq',
+              'value': 1.0,
+              'currency': 'USD',
+              'event_callback': callback
+          });
+          return false;
+        }
+    </script>
+
     <!-- Microsoft Advertising UET tag for Sahily Balloons (ID: 97214979) -->
     <script>
         (function(w,d,t,r,u){

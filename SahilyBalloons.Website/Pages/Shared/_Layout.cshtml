@@ -22,6 +22,33 @@
     <meta name="msapplication-config" content="~/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- Microsoft Advertising UET tag for Sahily Balloons (ID: 97214979) -->
+    <script>
+        (function(w,d,t,r,u){
+            var f,n,i;
+            w[u]=w[u]||[];
+            f=function(){
+                var o={ti:"97214979", enableAutoSpaTracking: true};
+                o.q=w[u];
+                w[u]=new UET(o);
+                w[u].push("pageLoad");
+            };
+            n=d.createElement(t);
+            n.src=r;
+            n.async=1;
+            n.onload=n.onreadystatechange=function(){
+                var s=this.readyState;
+                if(!s || s==="loaded" || s==="complete"){
+                    f();
+                    n.onload=n.onreadystatechange=null;
+                }
+            };
+            i=d.getElementsByTagName(t)[0];
+            i.parentNode.insertBefore(n,i);
+        })(window,document,"script","//bat.bing.com/bat.js","uetq");
+    </script>
+    <!-- End Microsoft Advertising UET tag -->
+
 </head>
 <body>
     <header>
@@ -81,5 +108,58 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- Simple cookie / privacy banner -->
+    <div id="sb-cookie-banner" style="
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  font-size: 14px;
+  display: none;
+  z-index: 9999;
+">
+        <div style="max-width: 960px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <span style="flex: 1 1 auto;">
+                We use cookies for analytics and advertising. By using this site, you agree to our
+                <a href="/Privacy" style="color: #66c2ff; text-decoration: underline;">Privacy Policy</a>.
+            </span>
+            <button id="sb-cookie-banner-btn" style="
+      flex: 0 0 auto;
+      padding: 6px 14px;
+      border: none;
+      border-radius: 4px;
+      background: #ffffff;
+      color: #000000;
+      cursor: pointer;
+      font-weight: 600;
+    ">
+                Got it
+            </button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+          var storageKey = 'sb_cookie_banner_dismissed';
+          if (localStorage.getItem(storageKey) === '1') return;
+
+          var banner = document.getElementById('sb-cookie-banner');
+          var btn = document.getElementById('sb-cookie-banner-btn');
+          if (!banner || !btn) return;
+
+          banner.style.display = 'block';
+
+          btn.addEventListener('click', function() {
+            banner.style.display = 'none';
+            localStorage.setItem(storageKey, '1');
+          });
+        })();
+    </script>
+    <!-- End cookie / privacy banner -->
+
 </body>
 </html>

@@ -117,6 +117,137 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
+    <script>
+        (function(){
+          'use strict';
+
+          // === Configuration ===
+          var INSTAGRAM_HANDLE = 'sahilyballoons';      // the Instagram handle as it appears in the URL
+          var EVENT_NAME = 'instagram_click';           // event name used in Google & Microsoft audiences
+          var GOOGLE_EVENT_CATEGORY = 'outbound';       // Google event category
+          var GOOGLE_EVENT_LABEL = 'instagram';         // Google event label
+          var DELAY_MS = 200;                           // pause before same-tab navigation (ms)
+
+          // === Helper: detect whether a link points to the Instagram handle ===
+          function isInstagramHandleLink(href){
+            if(!href) return false;
+            try{
+              // construct URL relative to current location
+              var url = new URL(href, location.href);
+              var host = (url.hostname || '').toLowerCase();
+              var path = (url.pathname || '').toLowerCase();
+              // require instagram host
+              if(host.indexOf('instagram.com') === -1) return false;
+              // require path contains the handle (e.g. /sahilyballoons or /sahilyballoons/)
+              return path.indexOf('/' + INSTAGRAM_HANDLE.toLowerCase()) !== -1;
+            }catch(e){
+              return false;
+            }
+          }
+
+          // === Send Google Analytics / Google Ads event via gtag ===
+          function sendGoogleEvent(){
+            if(typeof window.gtag === 'function'){
+              try{
+                gtag('event', EVENT_NAME, {
+                  'event_category': GOOGLE_EVENT_CATEGORY,
+                  'event_label': GOOGLE_EVENT_LABEL,
+                  'transport_type': 'beacon'
+                });
+              }catch(e){
+                // swallow errors to avoid breaking navigation
+              }
+            }
+          }
+
+          // === Send Microsoft UET custom event ===
+          function sendUetEvent(){
+            try{
+              window.uetq = window.uetq || [];
+              window.uetq.push('event', EVENT_NAME, { 'category': 'outbound' });
+            }catch(e){
+              // ignore failures
+            }
+          }
+
+          // === Click handler attached to each Instagram link ===
+          function onInstagramClick(e){
+            var el = e.currentTarget;
+
+            // detect new-tab open (ctrl/cmd/middle-click/explicit target=_blank)
+            var openInNewTab = el.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1;
+
+            // fire both analytics events
+            sendGoogleEvent();
+            sendUetEvent();
+
+            // for same-tab clicks, delay navigation slightly so beacon requests can be sent
+            if(!openInNewTab){
+              e.preventDefault();
+              var href = el.href;
+              setTimeout(function(){
+                window.location.assign(href);
+              }, DELAY_MS);
+            }
+            // for new-tab opens do nothing — browser handles navigation
+          }
+
+          // === Attach handler to a single anchor if it points to the IG handle ===
+          function attachToAnchor(a){
+            if(!a) return;
+            try{
+              // mark the element so we don't attach twice
+              if(a.getAttribute('data-ig-tracked') === '1') return;
+              a.setAttribute('data-ig-tracked', '1');
+            }catch(e){
+              // ignore DOM errors
+            }
+            var href = a.getAttribute('href');
+            if(!isInstagramHandleLink(href)) return;
+            a.addEventListener('click', onInstagramClick, { passive: false });
+          }
+
+          // === Scan all anchors currently on the page and attach handlers ===
+          function scanAnchors(){
+            var anchors = document.querySelectorAll('a[href]');
+            for(var i=0;i<anchors.length;i++){
+              attachToAnchor(anchors[i]);
+            }
+          }
+
+          // === Observe the DOM for anchors added later (handles dynamic content) ===
+          function observeMutations(){
+            if(!window.MutationObserver) return;
+            var observer = new MutationObserver(function(mutations){
+              mutations.forEach(function(m){
+                if(m.addedNodes && m.addedNodes.length){
+                  for(var i=0;i<m.addedNodes.length;i++){
+                    var node = m.addedNodes[i];
+                    if(node.nodeType !== 1) continue;
+                    if(node.tagName === 'A') attachToAnchor(node);
+                    else {
+                      var found = node.querySelectorAll && node.querySelectorAll('a[href]');
+                      if(found && found.length){
+                        for(var j=0;j<found.length;j++) attachToAnchor(found[j]);
+                      }
+                    }
+                  }
+                }
+              });
+            });
+            observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+          }
+
+          // === Initialize on DOM ready ===
+          if(document.readyState === 'loading'){
+            document.addEventListener('DOMContentLoaded', function(){ scanAnchors(); observeMutations(); });
+          } else {
+            scanAnchors(); observeMutations();
+          }
+
+        })();
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 
     <!-- Simple cookie / privacy banner -->

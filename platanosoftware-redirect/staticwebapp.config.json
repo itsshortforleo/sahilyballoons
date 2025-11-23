@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "route": "/*",
+      "redirect": "https://sahilyballoons.com",
+      "statusCode": 301
+    }
+  ]
+}

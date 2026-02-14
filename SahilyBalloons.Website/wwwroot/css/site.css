@@ -16,3 +16,156 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* ============================================================
+   ADA / WCAG 2.2 Level AA Accessibility Utilities
+   ============================================================ */
+
+/* --- 2.4.11 Focus Not Obscured (Minimum) ---
+   Prevent fixed navbar & cookie banner from covering focused elements.
+   scroll-padding keeps focusable content visible when scrolled. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;   /* height of sticky navbar + buffer */
+  scroll-padding-bottom: 70px; /* height of cookie banner + buffer */
+}
+
+/* Ensure focused elements are never clipped behind fixed bars */
+*:focus-visible {
+  scroll-margin-top: 80px;
+  scroll-margin-bottom: 70px;
+}
+
+/* --- Skip-to-content link (visible on focus only) --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 10000;
+  padding: 8px 16px;
+  background: #000;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #ffbf47;
+  outline-offset: 0;
+}
+
+/* --- Screen-reader-only content (Bootstrap .sr-only compatible) --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* --- Visible focus indicators for keyboard navigation (2.4.7 + enhanced) ---
+   WCAG 2.2 recommends a clearly visible focus indicator.
+   Using a double-ring (outline + box-shadow) for maximum visibility. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(0, 95, 204, 0.25);
+}
+
+/* Remove redundant browser default on mouse click but keep for keyboard */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* --- Reduced-motion support --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- High-contrast mode enhancements --- */
+@media (forced-colors: active) {
+  a:focus-visible,
+  button:focus-visible {
+    outline: 3px solid LinkText;
+  }
+}
+
+/* --- 2.5.8 Target Size (Minimum) – 24×24 CSS px for WCAG 2.2 AA ---
+   We use 44px where practical (nav) for the best touch experience. */
+.navbar-nav .nav-link {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+/* Ensure all inline links/buttons meet the 24px minimum */
+main a,
+main button,
+footer a,
+footer button {
+  min-height: 24px;
+  display: inline-block;
+  line-height: 1.5;
+}
+
+/* Navbar toggler (hamburger) must meet target size */
+.navbar-toggler {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+}
+
+/* --- Cookie banner focus trap visual cue --- */
+#sb-cookie-banner a:focus-visible {
+  outline: 2px solid #66c2ff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(102, 194, 255, 0.3);
+}
+
+#sb-cookie-banner button:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(0, 95, 204, 0.25);
+}
+
+/* Cookie banner button meets 24px target size */
+#sb-cookie-banner button {
+  min-height: 36px;
+  min-width: 44px;
+}

@@ -2,19 +2,20 @@
 @model ContactModel
 @{
     ViewData["Title"] = "Contact";
+    ViewData["MetaDescription"] = "Contact Sahily Balloons for balloon arches, garlands, and event decorations in Folsom, CA. Call/text (916) 667-1301 or email sahily@sahilyballoons.com.";
 }
 <h1>@ViewData["Title"]</h1>
 
 <p>Please call/text us for your balloon arch and garland needs!</p>
-<ul style="list-style:none; padding:0;">
+<ul style="list-style:none; padding:0;" aria-label="Contact information">
     <li>
         <strong>Sahily</strong><br>
-        Phone: <a href="tel:+19166671301" onclick="gtag_report_conversion('tel:+19166671301');">(916) 667-1301</a>
+        Phone: <a href="tel:+19166671301" onclick="gtag_report_conversion('tel:+19166671301');" aria-label="Call Sahily at (916) 667-1301">(916) 667-1301</a>
         <br>
-        Email: <a href="mailto:sahily@sahilyballoons.com?subject=Balloon%20Inquiry">sahily@sahilyballoons.com</a>
+        Email: <a href="mailto:sahily@sahilyballoons.com?subject=Balloon%20Inquiry" aria-label="Email Sahily at sahily@sahilyballoons.com">sahily@sahilyballoons.com</a>
     </li>
     <li style="margin-top:1em;">
         <strong>Leo</strong><br>
-        Email: <a href="mailto:leo@sahilyballoons.com?subject=Balloon%20Inquiry">leo@sahilyballoons.com</a>
+        Email: <a href="mailto:leo@sahilyballoons.com?subject=Balloon%20Inquiry" aria-label="Email Leo at leo@sahilyballoons.com">leo@sahilyballoons.com</a>
     </li>
 </ul>

@@ -112,7 +112,7 @@ a.navbar-brand {
 }
 
 a {
-    color: #0077cc;
+    color: #0056b3; /* WCAG AA contrast ratio 7.0:1 on white */
 }
 
 .navbar-nav .nav-link {
@@ -155,5 +155,11 @@ button.accept-policy {
     bottom: 0;
     width: 100%;
     white-space: nowrap;
+    line-height: 60px;
+    color: #595959; /* WCAG AA 4.6:1 contrast on white */
+}
+
+.footer p {
+    margin: 0;
     line-height: 60px;
 }

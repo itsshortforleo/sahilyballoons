@@ -7,10 +7,13 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SahilyBalloons.Website.styles.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+
+    @await RenderSectionAsync("Styles", required: false)
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="~/apple-touch-icon.png">
@@ -80,51 +83,254 @@
     <!-- End Microsoft Advertising UET tag -->
 
 </head>
-<body>
+<body class="@(ViewData["FullWidth"] != null ? "page-home" : "")">
     <!-- Skip Navigation Link (WCAG 2.2 AA) -->
     <a href="#main-content" class="sr-only sr-only-focusable skip-link">Skip to main content</a>
 
     <header role="banner">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" aria-label="Main navigation">
-            <div class="container">
-@*                
-                <minimo id="logo">
-                    <a class="minimo" href="https://sahilyballoons.com/">sahily balloons</a> 
-                </minimo>     *@
-                <h1 id="logo">
-                    <a href="https://sahilyballoons.com/">
-                        <span>Sahily Balloons</span>
-                    </a>
-                </h1>                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav class="apple-nav" id="apple-nav" aria-label="Main navigation">
+            <div class="apple-nav-inner">
+                <a href="/" class="apple-nav-link apple-nav-logo" aria-label="Sahily Balloons – Home">
+                    <img src="/images/icononly_nobuffer - Simple for small sizes transparent.png"
+                         alt="" class="apple-nav-logo-img" />
+                </a>
+                <a href="/Store" class="apple-nav-link" data-nav-dropdown="store">Store</a>
+                <a href="/Arch" class="apple-nav-link" data-nav-dropdown="arch">Arch</a>
+                <a href="/Garland" class="apple-nav-link" data-nav-dropdown="garland">Garland</a>
+                <a href="/Wall" class="apple-nav-link" data-nav-dropdown="wall">Wall</a>
+                <a href="/Column" class="apple-nav-link" data-nav-dropdown="column">Column</a>
+                <a href="/RoomDecor" class="apple-nav-link" data-nav-dropdown="roomdecor">Room&nbsp;Decor</a>
+                <a href="/Helium" class="apple-nav-link" data-nav-dropdown="helium">Helium</a>
+                <a href="/Corporate" class="apple-nav-link" data-nav-dropdown="corporate">Corporate</a>
+                <a href="/Contact" class="apple-nav-link" data-nav-dropdown="support">Support</a>
+                <a href="/Store" class="apple-nav-link apple-nav-bag" aria-label="Shopping bag">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3.5 1.5L1.5 4v8.5a1 1 0 001 1h9a1 1 0 001-1V4l-2-2.5z"/>
+                        <line x1="1.5" y1="4" x2="12.5" y2="4"/>
+                        <path d="M9.5 6a2.5 2.5 0 01-5 0"/>
+                    </svg>
+                </a>
+            </div>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1" role="menubar">
-                        <li class="nav-item links" role="none">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index" role="menuitem">Home</a>
-                        </li>
-@*                         <li class="nav-item links">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/News">News</a>
-                        </li>
-                        <li class="nav-item links">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Donate">Donate</a>
-                        </li>    *@                     
-                        <li class="nav-item links" role="none">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Contact" role="menuitem">Contact</a>
-                        </li>
-                    </ul>
+            <!-- Apple-style dropdown panels -->
+            <div class="apple-nav-dropdown" id="apple-nav-dropdown" aria-hidden="true">
+
+                <!-- Store -->
+                <div class="apple-dropdown-panel" data-panel="store">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Shop</h3>
+                            <ul>
+                                <li><a href="/Store">Shop All</a></li>
+                                <li><a href="/Arch">Arches</a></li>
+                                <li><a href="/Garland">Garlands</a></li>
+                                <li><a href="/Wall">Walls &amp; Backdrops</a></li>
+                                <li><a href="/Column">Columns</a></li>
+                                <li><a href="/RoomDecor">Room Décor</a></li>
+                                <li><a href="/Helium">Helium</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/Contact">Service Area</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Shop by Event</h3>
+                            <ul>
+                                <li><a href="/Store">Birthdays</a></li>
+                                <li><a href="/Store">Weddings</a></li>
+                                <li><a href="/Store">Baby Showers</a></li>
+                                <li><a href="/Corporate">Corporate Events</a></li>
+                                <li><a href="/Store">Graduations</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Arch -->
+                <div class="apple-dropdown-panel" data-panel="arch">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Explore Arches</h3>
+                            <ul>
+                                <li><a href="/Arch">Standard Arch</a></li>
+                                <li><a href="/Arch">Spiral Arch</a></li>
+                                <li><a href="/Arch">Organic Arch</a></li>
+                                <li><a href="/Arch">Half Arch</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/Arch">Browse Gallery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garland -->
+                <div class="apple-dropdown-panel" data-panel="garland">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Explore Garlands</h3>
+                            <ul>
+                                <li><a href="/Garland">Classic Garland</a></li>
+                                <li><a href="/Garland">Organic Garland</a></li>
+                                <li><a href="/Garland">Table Runner</a></li>
+                                <li><a href="/Garland">Ceiling Garland</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/Garland">Browse Gallery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wall -->
+                <div class="apple-dropdown-panel" data-panel="wall">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Explore Walls</h3>
+                            <ul>
+                                <li><a href="/Wall">Balloon Wall</a></li>
+                                <li><a href="/Wall">Photo Backdrop</a></li>
+                                <li><a href="/Wall">Statement Wall</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/Wall">Browse Gallery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column -->
+                <div class="apple-dropdown-panel" data-panel="column">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Explore Columns</h3>
+                            <ul>
+                                <li><a href="/Column">Standard Column</a></li>
+                                <li><a href="/Column">Spiral Column</a></li>
+                                <li><a href="/Column">Linked Columns</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/Column">Browse Gallery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Decor -->
+                <div class="apple-dropdown-panel" data-panel="roomdecor">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Explore Room Décor</h3>
+                            <ul>
+                                <li><a href="/RoomDecor">Ceiling Treatments</a></li>
+                                <li><a href="/RoomDecor">Floor Displays</a></li>
+                                <li><a href="/RoomDecor">Centerpieces</a></li>
+                                <li><a href="/RoomDecor">Bouquets</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/RoomDecor">Browse Gallery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Helium -->
+                <div class="apple-dropdown-panel" data-panel="helium">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Explore Helium</h3>
+                            <ul>
+                                <li><a href="/Helium">Helium Bouquets</a></li>
+                                <li><a href="/Helium">Floating Displays</a></li>
+                                <li><a href="/Helium">Ceiling Fills</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/Helium">Browse Gallery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corporate -->
+                <div class="apple-dropdown-panel" data-panel="corporate">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Corporate Events</h3>
+                            <ul>
+                                <li><a href="/Corporate">Product Launches</a></li>
+                                <li><a href="/Corporate">Grand Openings</a></li>
+                                <li><a href="/Corporate">Trade Shows</a></li>
+                                <li><a href="/Corporate">Company Parties</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/Corporate">Browse Gallery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div class="apple-dropdown-panel" data-panel="support">
+                    <div class="apple-dropdown-content">
+                        <div class="apple-dropdown-col apple-dropdown-col--main">
+                            <h3>Support</h3>
+                            <ul>
+                                <li><a href="/Contact">Contact Us</a></li>
+                                <li><a href="/Contact">Request a Quote</a></li>
+                                <li><a href="/Privacy">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                        <div class="apple-dropdown-col">
+                            <h3>Reach Out</h3>
+                            <ul>
+                                <li><a href="tel:+19166671301">Call (916) 667-1301</a></li>
+                                <li><a href="mailto:sahily@sahilyballoons.com">Email Us</a></li>
+                                <li><a href="https://www.instagram.com/sahilyballoons/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main id="main-content" role="main" class="pb-3" tabindex="-1">
-            @RenderBody()
-        </main>
-    </div>
+    <!-- Background scrim when dropdown is open -->
+    <div class="apple-nav-scrim" id="apple-nav-scrim"></div>
+    <main id="main-content" role="main" tabindex="-1">
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted" role="contentinfo">
         <div class="container">
@@ -133,9 +339,50 @@
         </div>
     </footer>
 
+    <!-- Floating Help Button -->
+    <button class="help-fab" id="help-fab" aria-label="Get help" title="Need help?">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/>
+            <circle cx="12" cy="10" r="1.5"/>
+            <circle cx="8" cy="10" r="1.5"/>
+            <circle cx="16" cy="10" r="1.5"/>
+        </svg>
+    </button>
+
+    <!-- Help Modal -->
+    <div class="help-modal-overlay" id="help-modal" role="dialog" aria-modal="true" aria-label="Help options">
+        <div class="help-modal">
+            <button class="help-modal-close" id="help-modal-close" aria-label="Close help">&times;</button>
+            <div class="help-modal-header">
+                <h3>How can we help?</h3>
+                <p>We're here to make your event amazing.</p>
+            </div>
+            <div class="help-modal-body">
+                <a href="tel:+19166671301" class="help-option" onclick="gtag_report_conversion('tel:+19166671301');">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+                    Call or text us
+                </a>
+                <a href="mailto:sahily@sahilyballoons.com?subject=Balloon%20Inquiry" class="help-option">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Email us
+                </a>
+                <a href="https://www.instagram.com/sahilyballoons/" target="_blank" rel="noopener noreferrer" class="help-option">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2zm-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+                    Message on Instagram
+                </a>
+                <a href="/Contact" class="help-option">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+                    Request a quote
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/nav.js" asp-append-version="true"></script>
+    <script src="~/js/home.js" asp-append-version="true"></script>
 
     <script>
         (function(){

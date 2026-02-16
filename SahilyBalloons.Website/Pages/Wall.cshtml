@@ -1,0 +1,105 @@
+@page
+@model WallModel
+@{
+    ViewData["Title"] = "Balloon Walls & Backdrops – Sahily Balloons";
+    ViewData["MetaDescription"] = "Statement balloon walls and photo backdrops that wow your guests. Custom-built by Sahily Balloons for any event.";
+    ViewData["FullWidth"] = true;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/category.css" asp-append-version="true" />
+}
+
+<!-- Hero -->
+<section class="category-hero" aria-label="Balloon Walls &amp; Backdrops">
+    <img src="/images/showcase-wall.jpg"
+         alt="Stunning balloon wall backdrop by Sahily Balloons"
+         class="category-hero-img"
+         loading="eager" />
+    <div class="category-hero-overlay">
+        <h1 class="category-hero-title">Walls &amp; Backdrops</h1>
+        <p class="category-hero-subtitle">Statement pieces that wow your guests.</p>
+        <div class="category-hero-actions">
+            <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+            <a href="/Store" class="category-btn category-btn-outline">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky sub-nav -->
+<nav class="category-subnav" aria-label="Walls navigation">
+    <div class="category-subnav-inner">
+        <span class="category-subnav-brand">Walls</span>
+        <a href="#styles" class="category-subnav-link category-subnav-link--active">Styles</a>
+        <a href="#features" class="category-subnav-link">Features</a>
+        <a href="#pricing" class="category-subnav-link">Pricing</a>
+        <a href="/Contact" class="category-subnav-cta">Get a Quote</a>
+    </div>
+</nav>
+
+<!-- Styles section -->
+<section id="styles" class="category-feature category-feature--light category-fade" aria-label="Wall styles">
+    <p class="category-feature-eyebrow">Styles</p>
+    <h2 class="category-feature-title">Backdrops that steal the show</h2>
+    <p class="category-feature-description">Full-coverage balloon walls, photo backdrops, and statement pieces designed to be the focal point of your celebration.</p>
+    <div class="category-feature-image">
+        <img src="/images/showcase-wall.jpg"
+             alt="Balloon wall and backdrop options"
+             loading="lazy" />
+    </div>
+</section>
+
+<!-- Features section -->
+<section id="features" class="category-feature category-feature--gray category-fade" aria-label="Wall features">
+    <p class="category-feature-eyebrow">Features</p>
+    <h2 class="category-feature-title">Immersive design</h2>
+    <p class="category-feature-description">Our walls use layered balloon clusters in multiple sizes to create depth, dimension, and unforgettable photo opportunities.</p>
+    <div class="category-specs">
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🖼️</div>
+            <p class="category-spec-label">Full Coverage</p>
+            <p class="category-spec-value">Floor to ceiling</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🎭</div>
+            <p class="category-spec-label">Custom Themes</p>
+            <p class="category-spec-value">Matched to your event</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🔧</div>
+            <p class="category-spec-label">Easy Setup</p>
+            <p class="category-spec-value">We handle everything</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">✨</div>
+            <p class="category-spec-label">Dimensional</p>
+            <p class="category-spec-value">Layered 3D clusters</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing CTA -->
+<section id="pricing" class="category-pricing category-fade" aria-label="Get a quote">
+    <h2 class="category-pricing-title">Make a statement</h2>
+    <p class="category-pricing-subtitle">Starting from $200. Every wall is custom — contact us for an exact quote.</p>
+    <div class="category-pricing-actions">
+        <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+        <a href="/Store" class="category-btn category-btn-outline" style="color:#1d1d1f;border-color:#1d1d1f;">Browse Store</a>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('.category-fade');
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+                }, { threshold: 0.15 });
+                targets.forEach(t => obs.observe(t));
+            } else {
+                targets.forEach(t => t.classList.add('visible'));
+            }
+        });
+    </script>
+}

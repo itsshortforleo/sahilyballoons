@@ -182,29 +182,29 @@
     }
 
     // ----------------------------------------------------------
-    // 5. Focus Not Obscured (2.4.11)
-    //    When an element receives focus, scroll it into view if
-    //    it would be hidden behind a fixed navbar or banner.
+    // 5. Focus Not Obscured (2.4.11) — DISABLED
+    //    Auto-scroll on focus was causing unwanted page scrolling.
+    //    Re-enable by uncommenting initFocusNotObscured() below.
     // ----------------------------------------------------------
-    function initFocusNotObscured() {
-        document.addEventListener('focusin', function (e) {
-            var el = e.target;
-            if (!el || !el.getBoundingClientRect) return;
-
-            var rect = el.getBoundingClientRect();
-            var viewH = window.innerHeight || document.documentElement.clientHeight;
-
-            // Check if element is obscured by top navbar (~70px)
-            // or bottom cookie banner (~60px when visible)
-            var banner = document.getElementById('sb-cookie-banner');
-            var bannerHeight = (banner && banner.style.display === 'block') ? banner.offsetHeight : 0;
-            var navbarHeight = 70;
-
-            if (rect.top < navbarHeight || rect.bottom > viewH - bannerHeight) {
-                el.scrollIntoView({ block: 'center', behavior: 'smooth' });
-            }
-        }, true);
-    }
+    // function initFocusNotObscured() {
+    //     document.addEventListener('focusin', function (e) {
+    //         var el = e.target;
+    //         if (!el || !el.getBoundingClientRect) return;
+    //
+    //         var rect = el.getBoundingClientRect();
+    //         var viewH = window.innerHeight || document.documentElement.clientHeight;
+    //
+    //         // Check if element is obscured by top navbar (~70px)
+    //         // or bottom cookie banner (~60px when visible)
+    //         var banner = document.getElementById('sb-cookie-banner');
+    //         var bannerHeight = (banner && banner.style.display === 'block') ? banner.offsetHeight : 0;
+    //         var navbarHeight = 70;
+    //
+    //         if (rect.top < navbarHeight || rect.bottom > viewH - bannerHeight) {
+    //             el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    //         }
+    //     }, true);
+    // }
 
     // ----------------------------------------------------------
     // 6. Initialize on DOM ready
@@ -214,7 +214,7 @@
         markCurrentNavLink();
         labelExternalLinks();
         ensureIframeTitles();
-        initFocusNotObscured();
+        // initFocusNotObscured(); // Disabled
     }
 
     if (document.readyState === 'loading') {

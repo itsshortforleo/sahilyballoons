@@ -1,0 +1,461 @@
+/* ============================================================
+   Sahily Balloons – Apple-style Homepage
+   Premium minimalist design inspired by apple.com
+   ============================================================ */
+
+/* --- Promo Banner --- */
+
+/* Phase 1: Outer wrapper pushes content down.
+   Gray background (matches navbar) is revealed as space opens. */
+@keyframes bannerPush {
+    0%   { max-height: 0; }
+    100% { max-height: 58px; }
+}
+
+/* Phase 2: Inner content slides down into the opened space. */
+@keyframes bannerSlide {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
+}
+
+.promo-banner {
+    background-color: rgba(244, 244, 246, 0.8); /* navbar gray */
+    overflow: hidden;
+    max-height: 0;
+    animation: bannerPush 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards;
+}
+
+.promo-banner-content {
+    background-color: #fff;
+    text-align: center;
+    font-size: 14.5px;
+    color: #1d1d1f;
+    line-height: 1.4;
+    padding: 18px 20px;
+    transform: translateY(-100%);
+    animation: bannerSlide 0.54s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.66s forwards;
+}
+
+.promo-banner a {
+    color: #06c;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.promo-banner a:hover {
+    text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .promo-banner {
+        max-height: none;
+        animation: none;
+    }
+    .promo-banner-content {
+        transform: none;
+        animation: none;
+    }
+}
+
+/* --- Store Hero Section --- */
+.store-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 60px 24px 40px;
+    gap: 40px;
+    flex-wrap: wrap;
+    background-color: #f4f4f6;
+}
+
+/* Store page body background */
+body {
+    background-color: #f4f4f6;
+}
+
+.store-hero-left h1 {
+    font-size: 80px;
+    font-weight: 600;
+    color: #1d1d1f;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    margin: 0 0 0 140px;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.store-hero-right {
+    text-align: right;
+    max-width: 317px;
+}
+
+.store-hero-right h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1d1d1f;
+    letter-spacing: -0.007em;
+    line-height: 1.25;
+    margin: 0 0 16px;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.store-hero-right .hero-link {
+    display: block;
+    color: #06c;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    margin-bottom: 6px;
+    line-height: 1.42857;
+    letter-spacing: -0.016em;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.store-hero-right .hero-link:hover {
+    text-decoration: underline;
+}
+
+.store-hero-right .hero-link::after {
+    content: ' \203A';
+}
+
+/* --- Category Strip (product icon row like Apple Store) --- */
+.category-strip {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    flex-wrap: nowrap;
+    padding: 32px 24px 48px;
+    max-width: 1080px;
+    margin: 0 auto;
+    border-top: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    background-color: #f4f4f6;
+}
+
+.category-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #1d1d1f;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    min-width: 68px;
+}
+
+.category-item:hover {
+    transform: scale(1.06);
+}
+
+.category-item:focus-visible {
+    outline: 3px solid #06c;
+    outline-offset: 6px;
+    border-radius: 8px;
+}
+
+.category-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    overflow: hidden;
+    background: #f5f5f7;
+}
+
+.category-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Placeholder icons until real images are provided */
+.category-icon .icon-placeholder {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.category-item .category-label {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #000000;
+    white-space: nowrap;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Featured Section ("The latest. Take a look at what's new.") --- */
+.featured-section {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    background-color: #f4f4f6;
+}
+
+.section-header {
+    margin-bottom: 28px;
+}
+
+.section-header h2 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #1d1d1f;
+    display: inline;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.section-header .section-subtitle {
+    font-size: 40px;
+    font-weight: 400;
+    color: #6e6e73;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+/* Featured grid: scrollable horizontal row like Apple */
+.featured-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+}
+
+.featured-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.featured-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f5f5f7;
+    min-height: 420px;
+    min-width: 320px;
+    max-width: 400px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #1d1d1f;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: start;
+}
+
+.featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.featured-card:focus-visible {
+    outline: 3px solid #06c;
+    outline-offset: 4px;
+}
+
+.card-content {
+    padding: 32px 28px 0;
+    z-index: 1;
+}
+
+.card-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6e6e73;
+    margin-bottom: 4px;
+}
+
+.card-content h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.card-content .card-desc {
+    font-size: 0.9rem;
+    color: #6e6e73;
+    margin: 0 0 4px;
+    line-height: 1.4;
+}
+
+.card-content .card-price {
+    font-size: 0.85rem;
+    color: #86868b;
+    margin: 0;
+}
+
+.card-image {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    padding: 24px 24px 28px;
+}
+
+.card-image img {
+    max-width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+}
+
+/* Placeholder for cards without images yet */
+.card-image-placeholder {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    opacity: 0.15;
+    padding: 40px;
+    user-select: none;
+}
+
+/* Dark card variant */
+.featured-card.card-dark {
+    background: #1d1d1f;
+    color: #f5f5f7;
+}
+
+.featured-card.card-dark .card-label {
+    color: #a1a1a6;
+}
+
+.featured-card.card-dark .card-content .card-desc {
+    color: #a1a1a6;
+}
+
+.featured-card.card-dark .card-content .card-price {
+    color: #86868b;
+}
+
+/* --- Help / Contact Section --- */
+.help-section {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    background-color: #f4f4f6;
+}
+
+.help-section .section-header h2 {
+    display: inline;
+}
+
+.help-section .section-subtitle {
+    font-size: clamp(1.5rem, 3.5vw, 1.75rem);
+    font-weight: 400;
+    color: #6e6e73;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+/* --- Scroll Fade-in Animation --- */
+.fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation for cards */
+.fade-in-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.fade-in-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+.fade-in-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+.fade-in-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+.fade-in-on-scroll:nth-child(6) { transition-delay: 0.5s; }
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .featured-card {
+        transition: none;
+    }
+
+    .category-item {
+        transition: none;
+    }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .store-hero {
+        flex-direction: column;
+        padding: 40px 20px 32px;
+        gap: 24px;
+    }
+
+    .store-hero-right {
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .category-strip {
+        gap: 24px;
+        padding: 24px 16px 36px;
+        justify-content: flex-start;
+    }
+
+    .category-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .featured-card {
+        min-width: 280px;
+        min-height: 360px;
+    }
+
+    .hero-section {
+        padding: 48px 20px 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-strip {
+        gap: 16px;
+    }
+
+    .category-icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .category-item .category-label {
+        font-size: 11px;
+    }
+
+    .featured-card {
+        min-width: 260px;
+    }
+}

@@ -1,0 +1,105 @@
+@page
+@model RoomDecorModel
+@{
+    ViewData["Title"] = "Room Décor – Sahily Balloons";
+    ViewData["MetaDescription"] = "Complete room transformations with balloon décor — ceiling treatments, floor displays, centerpieces, and bouquets from Sahily Balloons.";
+    ViewData["FullWidth"] = true;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/category.css" asp-append-version="true" />
+}
+
+<!-- Hero -->
+<section class="category-hero" aria-label="Room Décor">
+    <img src="/images/showcase-roomdecor.jpg"
+         alt="Full room balloon décor by Sahily Balloons"
+         class="category-hero-img"
+         loading="eager" />
+    <div class="category-hero-overlay">
+        <h1 class="category-hero-title">Room Décor</h1>
+        <p class="category-hero-subtitle">Complete room transformations tailored to your theme.</p>
+        <div class="category-hero-actions">
+            <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+            <a href="/Store" class="category-btn category-btn-outline">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky sub-nav -->
+<nav class="category-subnav" aria-label="Room décor navigation">
+    <div class="category-subnav-inner">
+        <span class="category-subnav-brand">Room Décor</span>
+        <a href="#styles" class="category-subnav-link category-subnav-link--active">Styles</a>
+        <a href="#features" class="category-subnav-link">Features</a>
+        <a href="#pricing" class="category-subnav-link">Pricing</a>
+        <a href="/Contact" class="category-subnav-cta">Get a Quote</a>
+    </div>
+</nav>
+
+<!-- Styles section -->
+<section id="styles" class="category-feature category-feature--light category-fade" aria-label="Room décor styles">
+    <p class="category-feature-eyebrow">Styles</p>
+    <h2 class="category-feature-title">Transform the entire room</h2>
+    <p class="category-feature-description">From elegant ceiling treatments to eye-catching floor displays and table centerpieces — we handle the complete décor experience.</p>
+    <div class="category-feature-image">
+        <img src="/images/showcase-roomdecor.jpg"
+             alt="Room décor balloon styling"
+             loading="lazy" />
+    </div>
+</section>
+
+<!-- Features section -->
+<section id="features" class="category-feature category-feature--gray category-fade" aria-label="Room décor features">
+    <p class="category-feature-eyebrow">Features</p>
+    <h2 class="category-feature-title">Every detail, covered</h2>
+    <p class="category-feature-description">We coordinate colors, sizing, and placement across every element so your venue feels cohesive from floor to ceiling.</p>
+    <div class="category-specs">
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🏠</div>
+            <p class="category-spec-label">Full Venue</p>
+            <p class="category-spec-value">Ceiling to floor coverage</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🎨</div>
+            <p class="category-spec-label">Theme Design</p>
+            <p class="category-spec-value">Matched to your vision</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">💐</div>
+            <p class="category-spec-label">Centerpieces</p>
+            <p class="category-spec-value">Table-ready arrangements</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🪄</div>
+            <p class="category-spec-label">Bouquets</p>
+            <p class="category-spec-value">Weighted floor displays</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing CTA -->
+<section id="pricing" class="category-pricing category-fade" aria-label="Get a quote">
+    <h2 class="category-pricing-title">Design your dream space</h2>
+    <p class="category-pricing-subtitle">Packages from $250. Every installation is custom — contact us for an exact quote.</p>
+    <div class="category-pricing-actions">
+        <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+        <a href="/Store" class="category-btn category-btn-outline" style="color:#1d1d1f;border-color:#1d1d1f;">Browse Store</a>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('.category-fade');
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+                }, { threshold: 0.15 });
+                targets.forEach(t => obs.observe(t));
+            } else {
+                targets.forEach(t => t.classList.add('visible'));
+            }
+        });
+    </script>
+}

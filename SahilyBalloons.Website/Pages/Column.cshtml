@@ -1,0 +1,105 @@
+@page
+@model ColumnModel
+@{
+    ViewData["Title"] = "Balloon Columns – Sahily Balloons";
+    ViewData["MetaDescription"] = "Elegant balloon columns for pathways, stages, and event entrances. Standard, spiral, and linked columns from Sahily Balloons.";
+    ViewData["FullWidth"] = true;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/category.css" asp-append-version="true" />
+}
+
+<!-- Hero -->
+<section class="category-hero" aria-label="Balloon Columns">
+    <img src="/images/showcase-column.jpg"
+         alt="Elegant balloon columns by Sahily Balloons"
+         class="category-hero-img"
+         loading="eager" />
+    <div class="category-hero-overlay">
+        <h1 class="category-hero-title">Balloon Columns</h1>
+        <p class="category-hero-subtitle">Elegant vertical accents for pathways &amp; stages.</p>
+        <div class="category-hero-actions">
+            <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+            <a href="/Store" class="category-btn category-btn-outline">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky sub-nav -->
+<nav class="category-subnav" aria-label="Column navigation">
+    <div class="category-subnav-inner">
+        <span class="category-subnav-brand">Columns</span>
+        <a href="#styles" class="category-subnav-link category-subnav-link--active">Styles</a>
+        <a href="#features" class="category-subnav-link">Features</a>
+        <a href="#pricing" class="category-subnav-link">Pricing</a>
+        <a href="/Contact" class="category-subnav-cta">Get a Quote</a>
+    </div>
+</nav>
+
+<!-- Styles section -->
+<section id="styles" class="category-feature category-feature--light category-fade" aria-label="Column styles">
+    <p class="category-feature-eyebrow">Styles</p>
+    <h2 class="category-feature-title">Stand tall, stand out</h2>
+    <p class="category-feature-description">Choose from standard, spiral, or linked column designs — perfect for framing stages, lining aisles, or greeting guests at the door.</p>
+    <div class="category-feature-image">
+        <img src="/images/showcase-column.jpg"
+             alt="Balloon column styles"
+             loading="lazy" />
+    </div>
+</section>
+
+<!-- Features section -->
+<section id="features" class="category-feature category-feature--gray category-fade" aria-label="Column features">
+    <p class="category-feature-eyebrow">Features</p>
+    <h2 class="category-feature-title">Precision crafted</h2>
+    <p class="category-feature-description">Every column is built on a sturdy internal pole structure, topped with custom finishes — stars, numbers, or your choice of topper.</p>
+    <div class="category-specs">
+        <div class="category-spec-card">
+            <div class="category-spec-icon">📏</div>
+            <p class="category-spec-label">Height Options</p>
+            <p class="category-spec-value">4 ft to 8 ft tall</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🌀</div>
+            <p class="category-spec-label">Spiral &amp; Classic</p>
+            <p class="category-spec-value">Multiple patterns</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">⭐</div>
+            <p class="category-spec-label">Custom Toppers</p>
+            <p class="category-spec-value">Stars, numbers &amp; more</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🔗</div>
+            <p class="category-spec-label">Linked Sets</p>
+            <p class="category-spec-value">Pairs or groups</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing CTA -->
+<section id="pricing" class="category-pricing category-fade" aria-label="Get a quote">
+    <h2 class="category-pricing-title">Elevate your event</h2>
+    <p class="category-pricing-subtitle">Starting from $75 per column. Contact us for bundled pricing.</p>
+    <div class="category-pricing-actions">
+        <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+        <a href="/Store" class="category-btn category-btn-outline" style="color:#1d1d1f;border-color:#1d1d1f;">Browse Store</a>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('.category-fade');
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+                }, { threshold: 0.15 });
+                targets.forEach(t => obs.observe(t));
+            } else {
+                targets.forEach(t => t.classList.add('visible'));
+            }
+        });
+    </script>
+}

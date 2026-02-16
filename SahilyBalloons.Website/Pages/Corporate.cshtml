@@ -1,0 +1,105 @@
+@page
+@model CorporateModel
+@{
+    ViewData["Title"] = "Corporate Events – Sahily Balloons";
+    ViewData["MetaDescription"] = "Professional balloon décor for corporate events — product launches, grand openings, trade shows, and company parties from Sahily Balloons.";
+    ViewData["FullWidth"] = true;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/category.css" asp-append-version="true" />
+}
+
+<!-- Hero -->
+<section class="category-hero" aria-label="Corporate Events">
+    <img src="/images/showcase-corporate.jpg"
+         alt="Corporate event balloon décor by Sahily Balloons"
+         class="category-hero-img"
+         loading="eager" />
+    <div class="category-hero-overlay">
+        <h1 class="category-hero-title">Corporate Events</h1>
+        <p class="category-hero-subtitle">Professional balloon décor that elevates your brand.</p>
+        <div class="category-hero-actions">
+            <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+            <a href="/Store" class="category-btn category-btn-outline">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky sub-nav -->
+<nav class="category-subnav" aria-label="Corporate navigation">
+    <div class="category-subnav-inner">
+        <span class="category-subnav-brand">Corporate</span>
+        <a href="#services" class="category-subnav-link category-subnav-link--active">Services</a>
+        <a href="#features" class="category-subnav-link">Features</a>
+        <a href="#pricing" class="category-subnav-link">Pricing</a>
+        <a href="/Contact" class="category-subnav-cta">Get a Quote</a>
+    </div>
+</nav>
+
+<!-- Services section -->
+<section id="services" class="category-feature category-feature--light category-fade" aria-label="Corporate services">
+    <p class="category-feature-eyebrow">Services</p>
+    <h2 class="category-feature-title">Your brand, amplified</h2>
+    <p class="category-feature-description">From product launches to grand openings, we create on-brand balloon installations that leave a lasting impression on clients and employees alike.</p>
+    <div class="category-feature-image">
+        <img src="/images/showcase-corporate.jpg"
+             alt="Corporate balloon décor services"
+             loading="lazy" />
+    </div>
+</section>
+
+<!-- Features section -->
+<section id="features" class="category-feature category-feature--gray category-fade" aria-label="Corporate features">
+    <p class="category-feature-eyebrow">Features</p>
+    <h2 class="category-feature-title">Enterprise-grade execution</h2>
+    <p class="category-feature-description">Brand color matching, logo integration, and same-day setup — we partner with your marketing team to deliver flawless results.</p>
+    <div class="category-specs">
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🏢</div>
+            <p class="category-spec-label">Grand Openings</p>
+            <p class="category-spec-value">Ribbon-cutting ready</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🚀</div>
+            <p class="category-spec-label">Product Launches</p>
+            <p class="category-spec-value">Branded installations</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🤝</div>
+            <p class="category-spec-label">Trade Shows</p>
+            <p class="category-spec-value">Booth showstoppers</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🎉</div>
+            <p class="category-spec-label">Company Parties</p>
+            <p class="category-spec-value">Team celebrations</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing CTA -->
+<section id="pricing" class="category-pricing category-fade" aria-label="Get a quote">
+    <h2 class="category-pricing-title">Let's elevate your next event</h2>
+    <p class="category-pricing-subtitle">Custom packages for businesses of all sizes. Contact us for a free consultation.</p>
+    <div class="category-pricing-actions">
+        <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+        <a href="/Store" class="category-btn category-btn-outline" style="color:#1d1d1f;border-color:#1d1d1f;">Browse Store</a>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('.category-fade');
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+                }, { threshold: 0.15 });
+                targets.forEach(t => obs.observe(t));
+            } else {
+                targets.forEach(t => t.classList.add('visible'));
+            }
+        });
+    </script>
+}

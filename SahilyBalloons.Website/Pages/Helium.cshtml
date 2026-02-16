@@ -1,0 +1,105 @@
+@page
+@model HeliumModel
+@{
+    ViewData["Title"] = "Helium Balloons – Sahily Balloons";
+    ViewData["MetaDescription"] = "Helium bouquets, floating displays, and ceiling fills by Sahily Balloons. Perfect for parties, events, and celebrations.";
+    ViewData["FullWidth"] = true;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/category.css" asp-append-version="true" />
+}
+
+<!-- Hero -->
+<section class="category-hero" aria-label="Helium Balloons">
+    <img src="/images/showcase-helium.jpg"
+         alt="Helium balloon bouquets by Sahily Balloons"
+         class="category-hero-img"
+         loading="eager" />
+    <div class="category-hero-overlay">
+        <h1 class="category-hero-title">Helium</h1>
+        <p class="category-hero-subtitle">Floating magic for every celebration.</p>
+        <div class="category-hero-actions">
+            <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+            <a href="/Store" class="category-btn category-btn-outline">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky sub-nav -->
+<nav class="category-subnav" aria-label="Helium navigation">
+    <div class="category-subnav-inner">
+        <span class="category-subnav-brand">Helium</span>
+        <a href="#styles" class="category-subnav-link category-subnav-link--active">Styles</a>
+        <a href="#features" class="category-subnav-link">Features</a>
+        <a href="#pricing" class="category-subnav-link">Pricing</a>
+        <a href="/Contact" class="category-subnav-cta">Get a Quote</a>
+    </div>
+</nav>
+
+<!-- Styles section -->
+<section id="styles" class="category-feature category-feature--light category-fade" aria-label="Helium styles">
+    <p class="category-feature-eyebrow">Styles</p>
+    <h2 class="category-feature-title">Light as air, bold as you</h2>
+    <p class="category-feature-description">From curated bouquets to full ceiling fills, our helium arrangements add effortless elegance and a touch of whimsy.</p>
+    <div class="category-feature-image">
+        <img src="/images/showcase-helium.jpg"
+             alt="Helium balloon styles"
+             loading="lazy" />
+    </div>
+</section>
+
+<!-- Features section -->
+<section id="features" class="category-feature category-feature--gray category-fade" aria-label="Helium features">
+    <p class="category-feature-eyebrow">Features</p>
+    <h2 class="category-feature-title">Float above the rest</h2>
+    <p class="category-feature-description">Premium latex and foil options with hi-float treatment for maximum float time — keeping your event picture-perfect all day.</p>
+    <div class="category-specs">
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🎈</div>
+            <p class="category-spec-label">Bouquets</p>
+            <p class="category-spec-value">3, 5, or 7 balloon sets</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">☁️</div>
+            <p class="category-spec-label">Ceiling Fills</p>
+            <p class="category-spec-value">Dramatic overhead clouds</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">⏳</div>
+            <p class="category-spec-label">Hi-Float</p>
+            <p class="category-spec-value">Extended float time</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🪶</div>
+            <p class="category-spec-label">Foil &amp; Latex</p>
+            <p class="category-spec-value">Mixed material combos</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing CTA -->
+<section id="pricing" class="category-pricing category-fade" aria-label="Get a quote">
+    <h2 class="category-pricing-title">Let the celebration float</h2>
+    <p class="category-pricing-subtitle">Bouquets from $25. Ceiling fills priced per venue — contact us for details.</p>
+    <div class="category-pricing-actions">
+        <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+        <a href="/Store" class="category-btn category-btn-outline" style="color:#1d1d1f;border-color:#1d1d1f;">Browse Store</a>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('.category-fade');
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+                }, { threshold: 0.15 });
+                targets.forEach(t => obs.observe(t));
+            } else {
+                targets.forEach(t => t.classList.add('visible'));
+            }
+        });
+    </script>
+}

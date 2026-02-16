@@ -1,0 +1,172 @@
+@page
+@model SahilyBalloons.Website.Pages.StoreModel
+@{
+    ViewData["Title"] = "Store – Sahily Balloons";
+    ViewData["MetaDescription"] = "Shop balloon arches, garlands, walls, columns, room décor, helium balloons, and corporate event packages from Sahily Balloons in Folsom, CA.";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+}
+
+<!-- Promo Banner -->
+<div class="promo-banner" role="complementary" aria-label="Promotional banner">
+    <div class="promo-banner-content">
+        Save 3% when you pay by bank transfer.
+        <a href="/Contact">Learn&nbsp;more&nbsp;›</a>
+    </div>
+</div>
+
+<!-- Store Hero (Apple Store style: title left, tagline right) -->
+<div class="store-hero fade-in-on-scroll">
+    <div class="store-hero-left">
+        <h1>Store</h1>
+    </div>
+    <div class="store-hero-right">
+        <h2>The best way to create the&nbsp;event you&nbsp;love.</h2>
+        <a href="/Contact" class="hero-link">Get a free quote</a>
+        <a href="tel:+19166671301" class="hero-link" onclick="gtag_report_conversion('tel:+19166671301');">Call or text (916) 667-1301</a>
+    </div>
+</div>
+
+<!-- Category Strip (Apple product icon row) -->
+<nav class="category-strip" aria-label="Product categories">
+    <a href="#arch" class="category-item">
+        <div class="category-icon">
+            <span class="icon-placeholder" aria-hidden="true">🎈</span>
+        </div>
+        <span class="category-label">Arch</span>
+    </a>
+    <a href="#garland" class="category-item">
+        <div class="category-icon">
+            <span class="icon-placeholder" aria-hidden="true">🌿</span>
+        </div>
+        <span class="category-label">Garland</span>
+    </a>
+    <a href="#wall" class="category-item">
+        <div class="category-icon">
+            <span class="icon-placeholder" aria-hidden="true">🧱</span>
+        </div>
+        <span class="category-label">Wall</span>
+    </a>
+    <a href="#column" class="category-item">
+        <div class="category-icon">
+            <span class="icon-placeholder" aria-hidden="true">🏛️</span>
+        </div>
+        <span class="category-label">Column</span>
+    </a>
+    <a href="#room-decor" class="category-item">
+        <div class="category-icon">
+            <span class="icon-placeholder" aria-hidden="true">✨</span>
+        </div>
+        <span class="category-label">Room Decor</span>
+    </a>
+    <a href="#helium" class="category-item">
+        <div class="category-icon">
+            <span class="icon-placeholder" aria-hidden="true">🎉</span>
+        </div>
+        <span class="category-label">Helium</span>
+    </a>
+    <a href="#corporate" class="category-item">
+        <div class="category-icon">
+            <span class="icon-placeholder" aria-hidden="true">🏢</span>
+        </div>
+        <span class="category-label">Corporate</span>
+    </a>
+</nav>
+
+<!-- Featured Work (Apple "The latest" horizontal scroll) -->
+<section class="featured-section" aria-label="Featured work">
+    <div class="section-header">
+        <h2>Our work.</h2>
+        <span class="section-subtitle"> Take a look at what we create.</span>
+    </div>
+
+    <div class="featured-scroll">
+        <!-- Card 1: Arch -->
+        <a href="#arch" id="arch" class="featured-card fade-in-on-scroll" aria-label="Balloon Arch – View details">
+            <div class="card-content">
+                <h3>Balloon Arch</h3>
+                <p class="card-desc">The perfect frame for any entrance or photo backdrop.</p>
+                <p class="card-price">Starting from $150</p>
+            </div>
+            <div class="card-image-placeholder" aria-hidden="true">🎈</div>
+        </a>
+
+        <!-- Card 2: Garland -->
+        <a href="#garland" id="garland" class="featured-card card-dark fade-in-on-scroll" aria-label="Balloon Garland – View details">
+            <div class="card-content">
+                <h3>Balloon Garland</h3>
+                <p class="card-desc">Organic, flowing arrangements that transform any space.</p>
+                <p class="card-price">Starting from $120</p>
+            </div>
+            <div class="card-image-placeholder" aria-hidden="true">🌿</div>
+        </a>
+
+        <!-- Card 3: Wall -->
+        <a href="#wall" id="wall" class="featured-card fade-in-on-scroll" aria-label="Balloon Wall – View details">
+            <div class="card-content">
+                <h3>Balloon Wall</h3>
+                <p class="card-desc">Full-coverage statement pieces for events and brands.</p>
+                <p class="card-price">Starting from $200</p>
+            </div>
+            <div class="card-image-placeholder" aria-hidden="true">🧱</div>
+        </a>
+
+        <!-- Card 4: Column -->
+        <a href="#column" id="column" class="featured-card card-dark fade-in-on-scroll" aria-label="Balloon Column – View details">
+            <div class="card-content">
+                <h3>Balloon Column</h3>
+                <p class="card-desc">Elegant vertical accents to line pathways and stages.</p>
+                <p class="card-price">Starting from $75</p>
+            </div>
+            <div class="card-image-placeholder" aria-hidden="true">🏛️</div>
+        </a>
+
+        <!-- Card 5: Room Decor -->
+        <a href="#room-decor" id="room-decor" class="featured-card fade-in-on-scroll" aria-label="Room Decor – View details">
+            <div class="card-content">
+                <h3>Room Decor</h3>
+                <p class="card-desc">Complete room transformations tailored to your theme.</p>
+                <p class="card-price">Custom pricing</p>
+            </div>
+            <div class="card-image-placeholder" aria-hidden="true">✨</div>
+        </a>
+
+        <!-- Card 6: Helium -->
+        <a href="#helium" id="helium" class="featured-card card-dark fade-in-on-scroll" aria-label="Helium Balloons – View details">
+            <div class="card-content">
+                <h3>Helium Balloons</h3>
+                <p class="card-desc">Classic floating arrangements for celebrations big and small.</p>
+                <p class="card-price">Starting from $3/balloon</p>
+            </div>
+            <div class="card-image-placeholder" aria-hidden="true">🎉</div>
+        </a>
+
+        <!-- Card 7: Corporate -->
+        <a href="#corporate" id="corporate" class="featured-card fade-in-on-scroll" aria-label="Corporate Events – View details">
+            <div class="card-content">
+                <div class="card-label">For Business</div>
+                <h3>Corporate Events</h3>
+                <p class="card-desc">Professional balloon décor for launches, galas, and brand activations.</p>
+                <p class="card-price">Custom pricing</p>
+            </div>
+            <div class="card-image-placeholder" aria-hidden="true">🏢</div>
+        </a>
+    </div>
+</section>
+
+<!-- Help Section -->
+<section class="help-section fade-in-on-scroll" aria-label="Get help">
+    <div class="section-header">
+        <h2>Help is here.</h2>
+        <span class="section-subtitle"> Whenever and however you need it.</span>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // (banner animation handled by CSS keyframes)
+    </script>
+}
+

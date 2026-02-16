@@ -14,7 +14,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 0;
+  padding-top: 44px; /* offset for fixed navbar */
 }
 
 /* ============================================================
@@ -26,13 +27,13 @@ body {
    scroll-padding keeps focusable content visible when scrolled. */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;   /* height of sticky navbar + buffer */
+  scroll-padding-top: 60px;   /* height of sticky navbar + buffer */
   scroll-padding-bottom: 70px; /* height of cookie banner + buffer */
 }
 
 /* Ensure focused elements are never clipped behind fixed bars */
 *:focus-visible {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 60px;
   scroll-margin-bottom: 70px;
 }
 

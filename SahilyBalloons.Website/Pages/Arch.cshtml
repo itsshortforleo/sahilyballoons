@@ -1,0 +1,106 @@
+@page
+@model ArchModel
+@{
+    ViewData["Title"] = "Balloon Arches – Sahily Balloons";
+    ViewData["MetaDescription"] = "Stunning balloon arches for entrances, photo backdrops, and events. Explore standard, spiral, organic, and half arches from Sahily Balloons.";
+    ViewData["FullWidth"] = true;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/category.css" asp-append-version="true" />
+}
+
+<!-- Hero: full-viewport image (swap to video later) -->
+<section class="category-hero" aria-label="Balloon Arches">
+    <img src="/images/hero-arch.jpg"
+         alt="Stunning balloon arch by Sahily Balloons"
+         class="category-hero-img"
+         loading="eager" />
+    <div class="category-hero-overlay">
+        <h1 class="category-hero-title">Balloon Arches</h1>
+        <p class="category-hero-subtitle">The perfect frame for any entrance or photo backdrop.</p>
+        <div class="category-hero-actions">
+            <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+            <a href="/Store" class="category-btn category-btn-outline">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky sub-nav -->
+<nav class="category-subnav" aria-label="Arch navigation">
+    <div class="category-subnav-inner">
+        <span class="category-subnav-brand">Arches</span>
+        <a href="#styles" class="category-subnav-link category-subnav-link--active">Styles</a>
+        <a href="#features" class="category-subnav-link">Features</a>
+        <a href="#pricing" class="category-subnav-link">Pricing</a>
+        <a href="/Contact" class="category-subnav-cta">Get a Quote</a>
+    </div>
+</nav>
+
+<!-- Styles section -->
+<section id="styles" class="category-feature category-feature--light category-fade" aria-label="Arch styles">
+    <p class="category-feature-eyebrow">Styles</p>
+    <h2 class="category-feature-title">Find your perfect arch</h2>
+    <p class="category-feature-description">From classic spirals to modern organic shapes, our arches are custom-built to match your color palette and event theme.</p>
+    <div class="category-feature-image">
+        <img src="/images/showcase-arch.jpg"
+             alt="Variety of balloon arch styles"
+             loading="lazy" />
+    </div>
+</section>
+
+<!-- Features section -->
+<section id="features" class="category-feature category-feature--gray category-fade" aria-label="Arch features">
+    <p class="category-feature-eyebrow">Features</p>
+    <h2 class="category-feature-title">Built to impress</h2>
+    <p class="category-feature-description">Each arch is engineered with a reinforced frame, premium latex, and precise color matching for a flawless finish every time.</p>
+    <div class="category-specs">
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🎈</div>
+            <p class="category-spec-label">Custom Colors</p>
+            <p class="category-spec-value">Matched to your palette</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">📐</div>
+            <p class="category-spec-label">Any Size</p>
+            <p class="category-spec-value">6 ft to 20 ft wide</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">🏗️</div>
+            <p class="category-spec-label">Pro Setup</p>
+            <p class="category-spec-value">Delivery &amp; installation included</p>
+        </div>
+        <div class="category-spec-card">
+            <div class="category-spec-icon">⏰</div>
+            <p class="category-spec-label">Long-Lasting</p>
+            <p class="category-spec-value">Stays perfect all day</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing CTA -->
+<section id="pricing" class="category-pricing category-fade" aria-label="Get a quote">
+    <h2 class="category-pricing-title">Ready to make an entrance?</h2>
+    <p class="category-pricing-subtitle">Starting from $150. Every arch is custom — contact us for an exact quote.</p>
+    <div class="category-pricing-actions">
+        <a href="/Contact" class="category-btn category-btn-filled">Get a Quote</a>
+        <a href="/Store" class="category-btn category-btn-outline" style="color:#1d1d1f;border-color:#1d1d1f;">Browse Store</a>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Category page scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('.category-fade');
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+                }, { threshold: 0.15 });
+                targets.forEach(t => obs.observe(t));
+            } else {
+                targets.forEach(t => t.classList.add('visible'));
+            }
+        });
+    </script>
+}

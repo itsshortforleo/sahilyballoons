@@ -1,123 +1,238 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* ============================================================
+   Sahily Balloons – Layout Styles
+   Apple-style navigation bar (zero Bootstrap nav classes)
+   ============================================================ */
 
-.minimo {
-    padding-top: 0.3125rem;
-    padding-bottom: 0.3125rem;
-    margin-left: 1rem;
-    font-size: 2rem;
-    text-decoration: none;
-    text-align: center;
-    word-break: break-all;
-    font-family: 'Comfortaa', cursive;
-    white-space: nowrap;
-    overflow: hidden;
+/* --- Global typography --- */
+body {
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-a.minimo {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-    white-space: nowrap;
-    overflow: hidden;
+/* === Apple Navbar ================================== */
+.apple-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9000;
+    background: rgba(244, 244, 246, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: none;
+    transition: background 0.35s ease, transform 0.35s ease;
 }
 
-links a {
-    color: blue;
-    transition: all .5s linear;
+/* When dropdown is open, make navbar whiter */
+.apple-nav.apple-nav--dropdown-open {
+    background: rgba(244, 244, 246, 0.92);
+    border-bottom-color: transparent;
 }
 
-links a:hover {
-    color: red;
+/* Homepage: white cover wipe effect via ::before pseudo-element.
+   JS sets --nav-cover (100% at top, 0% when revealed).
+   Homepage navbar is fixed. */
+body.page-home .apple-nav {
+    position: fixed;
+    transition: transform 0.35s ease;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: transparent;
 }
 
-/* = logo */
-minimo#logo {
-    font-size: 1.5em;
-    /*    font-weight: 400;
-*/ /*    position: absolute;
-*/
-    /*    top: 25px;
-*/
+/* White curtain that shrinks from bottom-to-top as user scrolls */
+body.page-home .apple-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-cover, 100%);
+    /* Soft 3px feathered edge at the bottom of the white cover */
+    background: linear-gradient(to bottom, #fff calc(100% - 3px), transparent 100%);
+    pointer-events: none;
+    z-index: 0;
 }
 
-minimo#logo a:before {
-    content: '\1F388  ';
-    /*content: '\1F96D';*/ /*Mango*/
-    /*content: '\1F34C';*/ /*Banana*/
-    /*content: '\1F388';*/ /*Balloon*/
-    font-weight: initial;
-    /*        text-shadow: 1px 1px 2px gray;
-    filter: hue-rotate(15deg) saturate(.6) brightness(1.0);
-*/
+/* Ensure nav content sits above the ::before cover */
+body.page-home .apple-nav-inner,
+body.page-home .apple-nav-dropdown {
+    position: relative;
+    z-index: 1;
 }
 
-/*@media (max-width: 400px) {
-h1#logo {
-    font-size: 2em;
-    line-height: 1.2;
-    top: 35px;
-}
-}*/
-
-minimo#logo a {
-    height: 80px;
-    color: #000;
-    text-decoration: none;
+/* Non-homepage: slide up to hide */
+.apple-nav.apple-nav--hidden {
+    transform: translateY(-100%);
 }
 
-/*h1#logo a:hover, h1#logo a:active {
-    color: #fff;
-}*/
-
-/*
- * If you want use logo instead text title, please uncomment the following "h1#logo a" area (line 141~148).
- * change logo.png and size
- * change the logo's position at line 122
- */
-
-h1#logo a {
+.apple-nav-inner {
+    max-width: 980px;
+    height: 44px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center; /* centers content horizontally within the logo container */
-    height: 40px; /* Match the nav links’ height */
-    background: url('/images/icononly_nobuffer - Simple for small sizes transparent.png') no-repeat;
-    background-size: contain;
-    text-indent: -9999px; /* hides the text on the a tag */
-    overflow: hidden;
-    text-decoration: none;
+    justify-content: center;
+    padding: 0;
 }
 
-    h1#logo a span {
-        text-indent: 0; /* reveal the text */
-        overflow: visible;
-        margin-left: 50px; /* if you still need spacing from the background image */
-        font-size: 1.5rem;
-        color: #000;
-        font-family: 'Comfortaa', cursive;
-        line-height: 40px; /* set to match the container’s height */
-        vertical-align: middle;
-        margin-top: 7px;
-    }
-
-.navbar-nav {
+/* Every item in the nav — links, logo, bag — identical treatment */
+.apple-nav-link {
     display: flex;
-    align-items: center; /* vertically centers all nav links */
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 17px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.15s ease;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
+.apple-nav-link:hover {
+    color: #000;
 }
 
+.apple-nav-link:focus-visible {
+    outline: 2px solid #06c;
+    outline-offset: -2px;
+    border-radius: 4px;
+}
+
+/* Logo — same padding, just holds the image */
+.apple-nav-logo-img {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+}
+
+.apple-nav-logo:hover .apple-nav-logo-img {
+    opacity: 1;
+}
+
+/* Bag icon */
+.apple-nav-bag svg {
+    display: block;
+}
+
+/* === Apple Dropdown Panel ========================= */
+.apple-nav-dropdown {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    background: transparent;
+    transition: max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.32s ease,
+                background 0.32s ease;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.apple-nav-dropdown.open {
+    max-height: 480px;
+    opacity: 1;
+    background: rgba(244, 244, 246, 0.92);
+}
+
+.apple-dropdown-panel {
+    display: none;
+    padding: 32px 0 44px;
+}
+
+.apple-dropdown-panel.active {
+    display: block;
+}
+
+.apple-dropdown-content {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    padding: 0 40px;
+}
+
+.apple-dropdown-col {
+    min-width: 0;
+}
+
+.apple-dropdown-col h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6e6e73;
+    letter-spacing: 0.02em;
+    margin: 0 0 14px;
+    text-transform: none;
+}
+
+.apple-dropdown-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.apple-dropdown-col ul li {
+    margin: 0;
+}
+
+.apple-dropdown-col ul a {
+    display: block;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #424245;
+    text-decoration: none;
+    transition: color 0.15s ease;
+    line-height: 1.4;
+}
+
+.apple-dropdown-col ul a:hover {
+    color: #06c;
+}
+
+/* Main column — larger bold links (like Apple's product list) */
+.apple-dropdown-col--main ul a {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1d1d1f;
+    padding: 3px 0;
+    line-height: 1.35;
+}
+
+.apple-dropdown-col--main ul a:hover {
+    color: #06c;
+}
+
+/* Scrim behind dropdown */
+.apple-nav-scrim {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0);
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+    z-index: 8999;
+    pointer-events: none;
+    transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.apple-nav-scrim.visible {
+    background: rgba(245, 245, 247, 0.7);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    pointer-events: auto;
+}
+
+/* === General overrides === */
 a {
-    color: #0056b3; /* WCAG AA contrast ratio 7.0:1 on white */
-}
-
-.navbar-nav .nav-link {
-    line-height: 40px; /* Align navigation links vertically with the logo */
-    vertical-align: middle; /* Ensure vertical alignment */
+    color: #06c;
 }
 
 .btn-primary {
@@ -126,40 +241,221 @@ a {
     border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-.border-top {
-    border-top: 1px solid #e5e5e5;
-}
-
-.border-bottom {
-    border-bottom: 1px solid #e5e5e5;
-    line-height: 60px;
-}
-
-.box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-}
-
+/* === Footer === */
 .footer {
-    position: absolute;
-    bottom: 0;
+    position: relative;
     width: 100%;
-    white-space: nowrap;
-    line-height: 60px;
-    color: #595959; /* WCAG AA 4.6:1 contrast on white */
+    line-height: 1.5;
+    color: #6e6e73;
+    background: #f5f5f7;
+    white-space: normal;
 }
 
 .footer p {
     margin: 0;
-    line-height: 60px;
+    padding: 16px 0;
+    line-height: 1.5;
+}
+
+/* === Floating Help Button (FAB) === */
+/* Hidden on homepage – only visible on Store and other pages */
+body.page-home .help-fab,
+body.page-home .help-modal-overlay {
+    display: none !important;
+}
+
+.help-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9990;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #1d1d1f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.help-fab:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+.help-fab:focus-visible {
+    outline: 3px solid #06c;
+    outline-offset: 4px;
+}
+
+.help-fab svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+/* === Help Modal Overlay === */
+.help-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9991;
+    display: none;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 24px;
+}
+
+.help-modal-overlay.open {
+    display: flex;
+}
+
+.help-modal {
+    background: #fff;
+    border-radius: 20px;
+    width: 340px;
+    max-width: 90vw;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    animation: helpSlideUp 0.3s ease;
+    position: relative;
+}
+
+@keyframes helpSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.help-modal-header {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.help-modal-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: #1d1d1f;
+}
+
+.help-modal-header p {
+    font-size: 0.85rem;
+    color: #6e6e73;
+    margin: 0;
+}
+
+.help-modal-body {
+    padding: 16px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.help-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #f5f5f7;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.15s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.help-option:hover {
+    background: #e8e8ed;
+}
+
+.help-option:focus-visible {
+    outline: 3px solid #06c;
+    outline-offset: 2px;
+}
+
+.help-option svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    fill: #1d1d1f;
+}
+
+.help-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6e6e73;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.15s ease;
+}
+
+.help-modal-close:hover {
+    background: #f5f5f7;
+}
+
+/* === Mobile === */
+@media (max-width: 767.98px) {
+    .apple-nav {
+        min-height: 44px;
+        overflow: visible;
+    }
+
+    .apple-nav-inner {
+        height: auto;
+        min-height: 44px;
+        justify-content: flex-start;
+        padding: 0 8px;
+        gap: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .apple-nav-link {
+        font-size: 11px;
+        padding: 0 7px;
+        min-height: 44px;
+    }
+
+    .apple-dropdown-content {
+        flex-direction: column;
+        gap: 28px;
+        padding: 0 24px;
+    }
+
+    .apple-dropdown-col--main ul a {
+        font-size: 18px;
+    }
+
+    .help-fab {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .help-fab svg {
+        width: 24px;
+        height: 24px;
+    }
 }
